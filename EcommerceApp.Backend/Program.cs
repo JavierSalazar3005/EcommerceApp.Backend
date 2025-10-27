@@ -48,11 +48,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 // -------------------------------
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFlutterApp",
-        policy => policy
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .WithOrigins("http://localhost:5173", "https://tuapp.netlify.app")
+    options.AddPolicy("AllowFlutterApp", policy => policy
+            .AllowAnyOrigin()   // 👈 permite cualquier dominio
+            .AllowAnyHeader()   // 👈 permite cualquier header
+            .AllowAnyMethod()   // 👈 permite GET, POST, PUT, DELETE, etc.
     );
 });
 
